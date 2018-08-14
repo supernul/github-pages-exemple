@@ -41,7 +41,7 @@
 		<div id="map1"></div>
 		<div id="map2"></div>
 		<script>
-			var map = L.map('map2', {zoomControl: false}).fitBounds([[-17.4, -149.4], [-17.8, -149.8]]);
+			var map = L.map('map2', {zoomControl: false, attributionControl: false}).fitBounds([[-17.4, -149.4], [-17.8, -149.8]]);
 			L.tileLayer.provider('OpenStreetMap').addTo(map);
 			//L.control.zoom({position: 'topright'}).addTo(map);
 			var markerClusters = L.markerClusterGroup({
