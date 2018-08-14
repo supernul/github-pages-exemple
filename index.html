@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Cartes des labos</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">	
+		<link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico" />
+		<link rel="stylesheet" href="./map/leaflet.css"/>
+		<link rel="stylesheet" href="./map/MarkerCluster.css"/>
+		<link rel="stylesheet" href="./map/MarkerCluster.Default.css"/>
+		<script src="./map/leaflet.js"></script>
+		<script src="./map/leaflet-providers.js"></script>
+		<script src="./map/leaflet.markercluster.js"></script>
+		<style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+        html, body{
+            height: 100%;
+            width: 100%;
+        }
+		#map2 {
+			position:absolute;
+            height: 40%;
+            width: 30%;
+			z-index: 100;
+			border-right: 5px solid white;
+			border-bottom: 5px solid white;
+        }
+		#map1 {
+			position:absolute;
+            height: 100%;
+            width: 100%;
+			z-index: 1;
+        }
+
+    </style>
+	</head>
+	<body>
+		<div id="map1"></div>
+		<div id="map2"></div>
+		<script>
+			var map = L.map('map2', {zoomControl: false}).fitBounds([[-17.4, -149.4], [-17.8, -149.8]]);
+			L.tileLayer.provider('OpenStreetMap').addTo(map);
+			//L.control.zoom({position: 'topright'}).addTo(map);
+			var markerClusters = L.markerClusterGroup({
+				spiderfyOnMaxZoom:true,
+				showCoverageOnHover: false,
+				zoomToBoundsOnClick:false,
+				maxClusterRadius: 30}
+			);
+			var labs = [
+				[-17.58, -149.61, "GeoPaSu"],
+			];
+			for (var i = 0; i <labs.length; i++) {
+				markerInfo = labs[i];
+				var marker = L.marker([markerInfo[0], markerInfo[1]]);
+				marker.bindPopup(markerInfo[2]);
+				markerClusters.addLayer(marker);
+			};
+			map.addLayer( markerClusters );
+		</script>
+		<script>
+			var map = L.map('map1', {zoomControl: false}).fitBounds([[51, -6.5], [42, 6.5]]);
+			L.tileLayer.provider('OpenStreetMap').addTo(map);
+			L.control.zoom({position: 'topright'}).addTo(map);
+			var markerClusters = L.markerClusterGroup({
+				spiderfyOnMaxZoom:true,
+				showCoverageOnHover: false,
+				zoomToBoundsOnClick:false,
+				maxClusterRadius: 30}
+			);
+			var labs = [
+				[43.65, 3.86, "UMR 5120 CIRAD"],
+				[47.84, 1.94, "EA 1210 CEDETE"],
+				[47.37, 0.68, "UMR 7324 CITERES"],
+				[43.61, 7.05, "CRC"],
+				[47.21, -1.56, "UMR 1563 AAU<br>équipe CRENEAU"],
+				[49.24, 4.06, "EA 3804 CReSTIC"],
+				[48.81, 2.15, "DAVID"],
+				[48.83, 2.59, "DGU"],
+				[43.52, 1.51, "UMR 1201 DYNAFOR"],
+				[48.87, 2.38, "EIVP"],
+				[48.12, -1.70, "UMR 6590 ESO"],
+				[43.95, 4.82, "UMR 7300 ESPACE"],
+				[43.69, 7.24, "UMR 7300 ESPACE"],
+				[43.65, 3.88, "UMR 228 ESPACE-DEV"],
+				[43.45, -1.55, "ESTIA"],
+				[48.83, 2.39, "EVCAU"],
+				[45.75, 4.84, "UMR 5600 EVS"],
+				[48.02, 0.15, "GEF"],
+				[43.58, 1.40, "UMR 5602 GEODE"],
+				[48.85, 2.34, "UMR 8504 Géographie-Cités"],
+				[43.62, 3.87, "UMR GRED"],
+				[45.42, 4.41, "Henri Fayol"],
+				[48.53, 7.74, "UMR 7357 ICUBE"],
+				[49.46, 1.07, "UMR 6266 IDEES"],
+				[49.50, 0.13, "UMR 6266 IDEES"],
+				[49.19, -0.36, "UMR 6266 IDEES"],
+				[48.84, 2.59, "IFFSTAR"],
+				[48.79, 2.33, "IRC"],
+				[48.28, -4.42, "IRENAV"],
+				[48.11, -1.64, "UMR 6074 IRISA"],
+				[43.56, 1.47, "IRIT"],
+				[45.76, 3.11, "IRSTEA"],
+				[44.20, 5.77, "IRSTEA"],
+				[46.15, -1.16, "EA 2118 L3I"],
+				[45.78, 4.92, "UMR 5593 LAET"],
+				[47.31, 5.07, "UMR 6306 LE2I"],
+				[49.19, -0.36, "UMR 6554 LETG"],
+				[47.24, -1.55, "UMR 6554 LETG"],
+				[48.12, -1.70, "UMR 6554 LETG"],
+				[47.48, -0.60, "UMR 6554 LETG"],
+				[47.364, 0.68, "EA 2101 LI"],
+				[43.91, 4.89, "EA 4128 LIA"],
+				[46.57, 0.38, "EA 6315 LIAS"],
+				[48.94, 2.36, "EA 4383 LIASD"],
+				[46.14, -1.16, "UMR 6920 LIENSs"],
+				[45.190652, 5.767197, "UMR 5217 LIG"],
+				[45.760587, 3.107986, "UMR 6158 LIMOS"],
+				[45.782134, 4.86581, "UMR 5205 LIRIS"],
+				[43.5767958, 1.4045986, "UMR 5193 LIST-CIEU"],
+				[49.387049, 1.065088, "EA 4108 LITIS"],
+				[43.311335, -0.364487, "EA 3000 LIUPPA"],
+				[45.761717, 3.110062, "UMR 1273 METAFOR"],
+				[45.193783, 5.763623, "UMR 5194 PACTE"],
+				[43.315667, -0.366183, "UMR 5319 PASSAGE"],
+				[48.848104, 2.346893, "UMR 8586 PRODIG"],
+				[48.84559, 2.425199, "SRSIG-IGN"],
+				[43.643943, 3.870917, "UMR TETIS"],
+				[47.234048, 6.025377, "UMR 6049 THEMA"],
+				[50.607584, 3.136977, "EA 4477 TVES"]
+			];
+			for (var i = 0; i <labs.length; i++) {
+				markerInfo = labs[i];
+				var marker = L.marker([markerInfo[0], markerInfo[1]]);
+				marker.bindPopup(markerInfo[2]);
+				markerClusters.addLayer(marker);
+			};
+			map.addLayer( markerClusters );
+		</script>
+	</body>
+</html>
+CRC: 
+CRENEAU: 
+CRESTIC: 
